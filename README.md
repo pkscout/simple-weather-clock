@@ -20,13 +20,13 @@ You should install this card using [HACS](https://hacs.xyz).
 | font | string | IBM Plex Mono | font to use (must be installed as a resource, otherwise generic serif font is used)
 | fontweight | integer | 700 | CSS font-weight for clock and slots
 | opacity | float | 0.7 | opacity for measurement display in the slots
-| clockcolor | string | #dddddd | CSS color for clock digits
-| topleftcolor | string | #008001 | CSS color for top left slot
-| topcentercolor | string | #fe0000 | CSS color for top center slot
-| toprightcolor | string | #bdb76b | CSS color for top center slot
-| bottomleftcolor | string | #008001 | CSS color for bottom left slot
-| bottomcentercolor | string | #1f90ff | CSS color for bottom center slot
-| bottomrightcolor | string | #bdb76b | CSS color for bottom center slot
+| clockcolor | string | #dddddd | CSS color for clock digits (white-ish)
+| topleftcolor | string | #008001 | CSS color for top left slot (green)
+| topcentercolor | string | #fe0000 | CSS color for top center slot (red)
+| toprightcolor | string | #bdb76b | CSS color for top center slot (soft yellow)
+| bottomleftcolor | string | #008001 | CSS color for bottom left slot (green)
+| bottomcentercolor | string | #1f90ff | CSS color for bottom center slot (soft blue)
+| bottomrightcolor | string | #bdb76b | CSS color for bottom center slot (soft yellow)
 | displaywidth | string | 800px | width of display on which this will be displayed
 | displayheight | string | 480px | height of display on which this will be displayed
 | offset | string | 0px | change vertical position of card
