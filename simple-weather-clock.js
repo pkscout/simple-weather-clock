@@ -14,8 +14,8 @@ class SimpleWeatherClock extends HTMLElement {
         }
         
         .card-content {
-          width: ${this.config.displaywidth};
-          height: ${this.config.displayheight};
+          width: ${this.config.displaywidth}px;
+          height: ${this.config.displayheight}px;
           background-color: ${this.config.background};
           font-family: ${this.config.font}, serif;
           font-weight: ${this.config.fontweight};
@@ -27,7 +27,7 @@ class SimpleWeatherClock extends HTMLElement {
           grid-template-areas:
             "clock clock clock"
             "info info info";
-          padding-top: ${0 + this.config.offset}px;
+          padding-top: ${this.config.offset}px;
         }
 
         .clock {
@@ -35,9 +35,9 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: center;
           align-self: baseline;
           color: ${this.config.clockcolor};
-          font-size: ${this.config.clockfontsize};
+          font-size: ${this.config.clockfontsize}px;
           height: 160px;
-          padding-top: ${100 + this.config.clockadjust}px;
+          padding-top: ${this.config.clockpadding}px;
         }
         
         .info {
@@ -50,9 +50,9 @@ class SimpleWeatherClock extends HTMLElement {
             "info-top info-top info-top"
             "info-bottom info-bottom info-bottom";
           grid-area: info;
-          padding-left: ${15 + this.config.infoedge}px;
-          padding-right: ${15 + this.config.infoedge}px;
-          margin-top: ${0 - this.config.infoadjust}px;
+          padding-left: ${this.config.infopadding}px;
+          padding-right: ${this.config.infopadding}px;
+          margin-top: ${this.config.infoadjust}px;
         }
         
         .info-top {
@@ -72,7 +72,7 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: start;
           align-self: start;
           color: ${this.config.topleftcolor};
-          font-size: ${this.config.infofontsize};
+          font-size: ${this.config.infofontsize}px;
           padding-top: 30px;
           height: 55px;
         }
@@ -82,7 +82,7 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: center;
           align-self: start;
           color: ${this.config.topcentercolor};
-          font-size: ${this.config.infofontsize};
+          font-size: ${this.config.infofontsize}px;
           padding-top: 30px;
           height: 55px;
         }
@@ -92,7 +92,7 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: end;
           align-self: start;
           color: ${this.config.toprightcolor};
-          font-size: ${this.config.infofontsize};
+          font-size: ${this.config.infofontsize}px;
           padding-top: 30px;
           height: 55px;
         }
@@ -106,7 +106,7 @@ class SimpleWeatherClock extends HTMLElement {
           grid-template-areas:
             "info-bottom-left info-bottom-center info-bottom-right";
           grid-area: info-bottom;
-          margin-top: ${-20 - this.config.infobottomadjust + this.config.infospacing + this.config.clockspacing}px;
+          margin-top: ${this.config.infobottommargin}px;
         }
         
         .info-bottom-left {
@@ -114,7 +114,7 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: start;
           align-self: start;
           color: ${this.config.bottomleftcolor};
-          font-size: ${this.config.infofontsize};
+          font-size: ${this.config.infofontsize}px;
           padding-top: 30px;
           height: 55px;
         }
@@ -124,7 +124,7 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: center;
           align-self: start;
           color: ${this.config.bottomcentercolor};
-          font-size: ${this.config.infofontsize};
+          font-size: ${this.config.infofontsize}px;
           padding-top: 30px;
           height: 55px;
         }
@@ -134,7 +134,7 @@ class SimpleWeatherClock extends HTMLElement {
           justify-self: end;
           align-self: start;
           color: ${this.config.bottomrightcolor};
-          font-size: ${this.config.infofontsize};
+          font-size: ${this.config.infofontsize}px;
           padding-top: 30px;
           height: 55px;
         }
@@ -203,10 +203,15 @@ class SimpleWeatherClock extends HTMLElement {
     if (!config.clock) {
       throw new Error('Please define clock entity');
     }
+
     const dcfs = 260;
     const difs = 85;
-
+    const cp = 100;
+    const ip = 15;
+    const ibmt = -20;
+    var eba = 0;
     const cardConfig = Object.assign({}, config);
+
     if (!cardConfig.background) cardConfig.background = "#000000";
     if (!cardConfig.font) cardConfig.font = "IBM Plex Mono";
     if (!cardConfig.fontweight) cardConfig.fontweight = 700;
@@ -218,33 +223,33 @@ class SimpleWeatherClock extends HTMLElement {
     if (!cardConfig.bottomleftcolor) cardConfig.bottomleftcolor = "#008001";
     if (!cardConfig.bottomcentercolor) cardConfig.bottomcentercolor = "#1f90ff";
     if (!cardConfig.bottomrightcolor) cardConfig.bottomrightcolor = "#bdb76b";
-    if (!cardConfig.displaywidth) cardConfig.displaywidth = "800px";
-    if (!cardConfig.displayheight) cardConfig.displayheight = "480px";
-    if (!cardConfig.offset) cardConfig.offset = "0px";
-    if (!cardConfig.clockspacing) cardConfig.clockspacing = "0px";
-    if (!cardConfig.infospacing) cardConfig.infospacing = "0px";
-    if (!cardConfig.infoedge) cardConfig.infoedge = "0px";
-    if (!cardConfig.clockfontsize) {
-      cardConfig.clockfontsize = dcfs + "px";
-      cardConfig.clockadjust = 0;
+    if (!cardConfig.displaywidth) cardConfig.displaywidth = 800;
+    if (!cardConfig.displayheight) cardConfig.displayheight = 480;
+    if (!cardConfig.offset) cardConfig.offset = 0;
+    if (!cardConfig.clockspacing) cardConfig.clockspacing = 0;
+    if (!cardConfig.infospacing) cardConfig.infospacing = 0;
+    if (!cardConfig.infoedge) {
+      cardConfig.infopadding = ip;
     } else {
-      cardConfig.clockadjust = Math.round((Number(cardConfig.clockfontsize.slice(0,-2)) - dcfs)/3.0)
+      cardConfig.infopadding = ip + cardConfig.infoedge
+    }
+    if (!cardConfig.clockfontsize) {
+      cardConfig.clockfontsize = dcfs;
+      cardConfig.clockpadding = cp;
+    } else {
+      const ca = Math.round((cardConfig.clockfontsize - dcfs) / 3.0)
+      cardConfig.clockpadding = cp + ca
     }
     if (!cardConfig.infofontsize) {
-      cardConfig.infofontsize = difs + "px";
+      cardConfig.infofontsize = difs;
       cardConfig.infoadjust = 0;
-      cardConfig.infobottomadjust = 0;
     } else {
-      cardConfig.infoadjust = Math.round((Number(cardConfig.infofontsize.slice(0,-2)) - difs)/2.0);
-      cardConfig.infobottomadjust = Number(cardConfig.infofontsize.slice(0,-2)) - difs;
+      cardConfig.infoadjust = Math.round((cardConfig.infofontsize - difs) / 2.0);
+      eba = cardConfig.infofontsize - difs;
     }
-    cardConfig.offset = parseInt(cardConfig.offset.slice(0,-2));
-    cardConfig.clockspacing = parseInt(cardConfig.clockspacing.slice(0,-2));
-    cardConfig.infospacing = parseInt(cardConfig.infospacing.slice(0,-2));
-    cardConfig.infoedge = parseInt(cardConfig.infoedge.slice(0,-2));
-
+    cardConfig.infobottommargin = ibmt - eba + cardConfig.infospacing + cardConfig.clockspacing
+    
     this.config = cardConfig;
-
   }
 
   getCardSize() {
