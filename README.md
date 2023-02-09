@@ -45,8 +45,8 @@ The defaults are set for a RaspberryPi 7" touch display.  If you change the disp
   bottomleft: sensor.humidity_outdoor
   topcenter: sensor.openweathermap_forecast_temperature
   bottomcenter: sensor.openweathermap_forecast_temperature_low
-  topright: ${ whichSensor(currentUser)[0] }
-  bottomright: ${whichSensor(currentUser)[1] }
+  topright: sensor.temp_livingroom
+  bottomright: sensor.humidity_livingroom
 ```
 
 **Advaned Example**
