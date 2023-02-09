@@ -1,8 +1,8 @@
 # Simple Weather Clock
 A card for Home Assistant designed to display a digital clock with six slots below for various numeric environmental sensor data.  This card is meant to be used on a dashboard configured as a panel.
 
-**Installation**
-You should install this card using HACS.
+**Installation**  
+You should install this card using [HACS](https://hacs.xyz).
 
 **Options**
 
@@ -49,7 +49,7 @@ The defaults are set for a RaspberryPi 7" touch display.  If you change the disp
   bottomright: sensor.humidity_livingroom
 ```
 
-**Advaned Example**
+**Advaned Example**  
 You can use something like the [config-template-card](https://github.com/iantrich/config-template-card) to have one clock card for multiple clocks showing slightly different information.
 
 ```yaml
