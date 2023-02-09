@@ -23,6 +23,8 @@ You should install this card using [HACS](https://hacs.xyz).
 | background | string | #000000 | CSS color for background
 | font | string | IBM Plex Mono | font to use (must be installed as a resource, otherwise generic serif font is used)
 | fontweight | integer | 700 | CSS font-weight for clock and slots
+| clockfontsize | integer | 260 | CSS font-size for clock
+| infofontsize | integer | 85 | CSS font-size for info slots
 | opacity | float | 0.7 | opacity for measurement display in the slots
 | clockcolor | string | #dddddd | CSS color for clock digits (white-ish)
 | topleftcolor | string | #008001 | CSS color for top left slot (green)
@@ -31,12 +33,12 @@ You should install this card using [HACS](https://hacs.xyz).
 | bottomleftcolor | string | #008001 | CSS color for bottom left slot (green)
 | bottomcentercolor | string | #1f90ff | CSS color for bottom center slot (soft blue)
 | bottomrightcolor | string | #bdb76b | CSS color for bottom center slot (soft yellow)
-| displaywidth | string | 800px | width of display on which this will be displayed
-| displayheight | string | 480px | height of display on which this will be displayed
-| offset | string | 0px | change vertical position of card
-| clockspacing | string | 0px | change space between clock and info slots
-| infospacing | string | 0px | change space between info rows
-| infoedge | string | 0px | change space between edge of display and edge of info slots
+| displaywidth | integer | 800 | width (in px) of display on which this will be displayed
+| displayheight | integer | 480 | height (in px) of display on which this will be displayed
+| offset | integer | 0 | change vertical position of card (in px)
+| clockspacing | integer | 0 | change space between clock and info slots (in px)
+| infospacing | integer | 0 | change space between info rows (in px)
+| infoedge | integer | 0 | change space between edge of display and edge of info slots (in px)
 
 The defaults are set for a RaspberryPi 7" touch display.  If you change the display width and height, you'll want to adjust the font sizes to fit.  The card will do some amount of automatic respacing based on font size, but you can also manually fine tune it as needed with the other options.
 
