@@ -257,11 +257,11 @@ class SimpleWeatherClock extends HTMLElement {
   }
 }
 
-customElements.define('simple-weather-clock-dev', SimpleWeatherClock);
+customElements.define('simple-weather-clock', SimpleWeatherClock);
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "simple-weather-clock-dev",
-  name: "Simple Weather Clock Dev",
-  description: "DEV VERSION OF SIMPLE WEATHER CLOCK."
+  type: "simple-weather-clock",
+  name: "Simple Weather Clock",
+  description: "Displays a simple weather clock with six slots below it for environmental sensors."
 });
 
