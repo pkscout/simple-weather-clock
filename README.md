@@ -35,6 +35,7 @@ You should install this card using [HACS](https://hacs.xyz).
 | bottomrightcolor | string | #bdb76b | CSS color for bottom center slot (soft yellow)
 | displaywidth | integer | 800 | width (in px) of display on which this will be displayed
 | displayheight | integer | 480 | height (in px) of display on which this will be displayed
+| viewportheight | integer or text | 100 | height of the black background; if no measurement is included, it's in vh, otherwise it's the measurement you include (px, etc)
 | offset | integer | 0 | change vertical position of card (in px)
 | clockspacing | integer | 0 | change space between clock and info slots (in px)
 | infospacing | integer | 0 | change space between info rows (in px)

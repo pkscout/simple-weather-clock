@@ -5,7 +5,7 @@ class SimpleWeatherClock extends HTMLElement {
         <style>
         ha-card {
           display: flex;
-          height: 100vh;
+          height: ${this.config.viewportheight};
           border-width: 0px;
           border-radius: 0px;
           padding: 0px;
@@ -212,6 +212,7 @@ class SimpleWeatherClock extends HTMLElement {
     var eba = 0;
     const cardConfig = Object.assign({}, config);
 
+    if (!cardConfig.viewportheight) cardConfig.viewportheight = "100vh";
     if (!cardConfig.background) cardConfig.background = "#000000";
     if (!cardConfig.font) cardConfig.font = "IBM Plex Mono";
     if (!cardConfig.fontweight) cardConfig.fontweight = 700;
